@@ -43,7 +43,6 @@ var isAuthed = function(req, res, next) {
 };
 
 
-
 app.get('/auth/github',
 		 passport.authenticate('github'));
 
@@ -55,11 +54,7 @@ app.get('/auth/github/callback',
 			 }));
 
 
-
-
 app.get('/api/github/following', isAuthed, function(req, res) {
-
-
 	github.user.getFollowingFromUser({
 		user: "dasebast"
 	}, function(err, response) {
@@ -67,7 +62,6 @@ app.get('/api/github/following', isAuthed, function(req, res) {
 		console.log(response);
 		res.send(response);
 	});
-
 });
 
 

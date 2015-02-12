@@ -2,13 +2,16 @@ var app = angular.module('coderFriends');
 
 app.controller('homeCtrl', function($scope, githubService) {
 
-	$scope.showFollowers = githubService.getFollowers();
+	githubService.getFollowers().then(function(res) {
+		console.log(res);
+		$scope.friends = res;
+	});
 
-	
+
 	// DONT NEED
-	// $scope.goToGit = function() {
-	// 	console.log('hello');
-	// 	githubService.gitLogin();
-	// };
+	$scope.goToGit = function() {
+		console.log('hello');
+		githubService.gitLogin();
+	};
 
 });
